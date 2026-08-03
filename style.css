@@ -289,6 +289,54 @@ a:focus-visible {
     text-align: center;
 }
 
+.registration-page {
+    padding-block: 64px 40px;
+}
+
+.seller-card {
+    width: min(100%, 780px);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.optional {
+    color: var(--muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.terms-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    margin: 0 4px;
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.terms-option input {
+    flex: 0 0 auto;
+    width: 17px;
+    height: 17px;
+    margin-top: 2px;
+    accent-color: var(--pink-600);
+}
+
+.terms-option input.input-error {
+    outline: 2px solid var(--error);
+    outline-offset: 2px;
+}
+
+.terms-error {
+    margin: 5px 0 15px 30px;
+}
+
 .decoration {
     position: absolute;
     color: rgba(232, 91, 145, 0.32);
@@ -338,6 +386,11 @@ a:focus-visible {
     .heart-two {
         right: -10px;
         bottom: 1%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
     }
 }
 

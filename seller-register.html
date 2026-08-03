@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create a seller account for the Sweet Shop marketplace.">
+    <title>Create Seller Account | Sweet Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="page-wrapper registration-page">
+        <div class="decoration heart-one" aria-hidden="true">♥</div>
+        <div class="decoration sparkle" aria-hidden="true">✦</div>
+
+        <section class="login-card seller-card" aria-labelledby="register-title">
+            <div class="login-icon" aria-hidden="true">♡</div>
+            <header class="login-header">
+                <p class="eyebrow">Join our marketplace</p>
+                <h1 id="register-title">Seller Account</h1>
+                <p>Tell us about you and your shop to get started.</p>
+            </header>
+
+            <form id="sellerForm" novalidate>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="ownerName">Full name</label>
+                        <div class="input-wrapper">
+                            <span class="field-icon" aria-hidden="true">●</span>
+                            <input type="text" id="ownerName" name="ownerName" placeholder="Your full name" autocomplete="name" aria-describedby="ownerNameError">
+                        </div>
+                        <small class="error-message" id="ownerNameError"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="shopName">Shop name</label>
+                        <div class="input-wrapper">
+                            <span class="field-icon" aria-hidden="true">◆</span>
+                            <input type="text" id="shopName" name="shopName" placeholder="Your shop name" autocomplete="organization" aria-describedby="shopNameError">
+                        </div>
+                        <small class="error-message" id="shopNameError"></small>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <div class="input-wrapper">
+                            <span class="field-icon" aria-hidden="true">✉</span>
+                            <input type="email" id="email" name="email" placeholder="seller@example.com" autocomplete="email" aria-describedby="emailError">
+                        </div>
+                        <small class="error-message" id="emailError"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone number <span class="optional">(optional)</span></label>
+                        <div class="input-wrapper">
+                            <span class="field-icon" aria-hidden="true">☎</span>
+                            <input type="tel" id="phone" name="phone" placeholder="09XX XXX XXXX" autocomplete="tel" aria-describedby="phoneError">
+                        </div>
+                        <small class="error-message" id="phoneError"></small>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="sellerPassword">Password</label>
+                        <div class="input-wrapper">
+                            <span class="field-icon" aria-hidden="true">●</span>
+                            <input type="password" id="sellerPassword" name="password" placeholder="At least 8 characters" autocomplete="new-password" aria-describedby="sellerPasswordError">
+                            <button class="password-toggle" type="button" data-toggle="sellerPassword" aria-label="Show password" aria-pressed="false">Show</button>
+                        </div>
+                        <small class="error-message" id="sellerPasswordError"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm password</label>
+                        <div class="input-wrapper">
+                            <span class="field-icon" aria-hidden="true">●</span>
+                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Enter password again" autocomplete="new-password" aria-describedby="confirmPasswordError">
+                            <button class="password-toggle" type="button" data-toggle="confirmPassword" aria-label="Show password" aria-pressed="false">Show</button>
+                        </div>
+                        <small class="error-message" id="confirmPasswordError"></small>
+                    </div>
+                </div>
+
+                <label class="terms-option">
+                    <input type="checkbox" id="terms" name="terms" aria-describedby="termsError">
+                    <span>I agree to the marketplace terms and seller policies.</span>
+                </label>
+                <small class="error-message terms-error" id="termsError"></small>
+
+                <button class="login-button" type="submit">Create seller account <span aria-hidden="true">→</span></button>
+                <div class="form-message" id="formMessage" role="status" aria-live="polite"></div>
+            </form>
+
+            <p class="signup-text">Already registered? <a href="index.html">Back to login</a></p>
+        </section>
+    </main>
+    <script src="seller-register.js"></script>
+</body>
+</html>

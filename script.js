@@ -6,7 +6,6 @@ const passwordError = document.getElementById("passwordError");
 const formMessage = document.getElementById("formMessage");
 const passwordToggle = document.getElementById("passwordToggle");
 const forgotPassword = document.getElementById("forgotPassword");
-const signUpLink = document.getElementById("signUpLink");
 
 function showFieldError(input, errorElement, message) {
     input.classList.add("input-error");
@@ -30,7 +29,22 @@ function clearFormMessage() {
     formMessage.className = "form-message";
 }
 
-loginForm.addEventListener("submit", function (event) {
+function getSellerAccounts() {
+    try {
+        const accounts = JSON.parse(localStorage.getItem("sellerAccounts"));
+        return Array.isArray(accounts) ? accounts : [];
+    } catch {
+        return [];
+    }
+}
+
+async function hashPassword(password, salt) {
+    const bytes = new TextEncoder().encode(`${salt}:${password}`);
+    const hash = await crypto.subtle.digest("SHA-256", bytes);
+    return Array.from(new Uint8Array(hash), (byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
+loginForm.addEventListener("submit", async function (event) {
     event.preventDefault();
 
     const username = usernameInput.value.trim();
@@ -78,6 +92,22 @@ loginForm.addEventListener("submit", function (event) {
         return;
     }
 
+    const sellerAccount = getSellerAccounts().find(
+        (account) => account.email === username.toLowerCase()
+    );
+
+    if (sellerAccount) {
+        const passwordHash = await hashPassword(password, sellerAccount.passwordSalt);
+        if (passwordHash !== sellerAccount.passwordHash) {
+            showFieldError(passwordInput, passwordError, "Incorrect password for this seller account.");
+            showFormMessage("Unable to sign in. Please check your password.", "error");
+            passwordInput.focus();
+            return;
+        }
+
+        sessionStorage.setItem("currentSellerId", sellerAccount.id);
+    }
+
     showFormMessage("Login successful! Opening the shop...", "success");
 
     window.setTimeout(function () {
@@ -119,10 +149,9 @@ forgotPassword.addEventListener("click", function (event) {
     );
 });
 
-signUpLink.addEventListener("click", function (event) {
-    event.preventDefault();
-    showFormMessage(
-        "Account creation is not required for this front-end activity.",
-        "error"
-    );
-});
+const registeredEmail = new URLSearchParams(window.location.search).get("registered");
+
+if (registeredEmail) {
+    usernameInput.value = registeredEmail;
+    showFormMessage("Seller account created! You can now sign in.", "success");
+}
