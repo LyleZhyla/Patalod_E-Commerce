@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A cute pink and white login page with front-end validation.">
+    <title>Sweet Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="page-wrapper">
+        <div class="decoration heart-one" aria-hidden="true">♥</div>
+        <div class="decoration heart-two" aria-hidden="true">♥</div>
+        <div class="decoration sparkle" aria-hidden="true">✦</div>
+
+        <section class="login-card" aria-labelledby="login-title">
+            <div class="login-icon" aria-hidden="true">♡</div>
+
+            <header class="login-header">
+                <p class="eyebrow">Welcome back!</p>
+                <h1 id="login-title">Sweet Login</h1>
+                <p>Sign in to continue to your happy place.</p>
+            </header>
+
+            <form id="loginForm" novalidate>
+                <div class="form-group">
+                    <label for="username">Username or email</label>
+                    <div class="input-wrapper">
+                        <span class="field-icon" aria-hidden="true">✉</span>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="hello@example.com"
+                            autocomplete="username"
+                            aria-describedby="usernameError"
+                        >
+                    </div>
+                    <small class="error-message" id="usernameError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <span class="field-icon" aria-hidden="true">●</span>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter at least 6 characters"
+                            autocomplete="current-password"
+                            aria-describedby="passwordError"
+                        >
+                        <button
+                            class="password-toggle"
+                            id="passwordToggle"
+                            type="button"
+                            aria-label="Show password"
+                            aria-pressed="false"
+                        >
+                            Show
+                        </button>
+                    </div>
+                    <small class="error-message" id="passwordError"></small>
+                </div>
+
+                <div class="form-options">
+                    <label class="remember-option">
+                        <input type="checkbox" id="rememberMe" name="rememberMe">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" id="forgotPassword">Forgot password?</a>
+                </div>
+
+                <button class="login-button" type="submit">
+                    Login <span aria-hidden="true">→</span>
+                </button>
+
+                <div
+                    class="form-message"
+                    id="formMessage"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+            </form>
+
+            <p class="signup-text">
+                New here? <a href="#" id="signUpLink">Create an account</a>
+            </p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

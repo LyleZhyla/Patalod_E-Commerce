@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sweet Shop pink and white e-commerce dashboard.">
+    <title>Sweet Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="shop.css">
+</head>
+
+<body>
+    <div class="shop-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true">♡</span>
+                <div>
+                    <strong>Sweet Shop</strong>
+                    <small>Pretty little finds</small>
+                </div>
+            </div>
+
+            <button
+                class="sidebar-collapse"
+                id="sidebarCollapse"
+                type="button"
+                aria-label="Collapse side menu"
+                aria-expanded="true"
+            >
+                <span aria-hidden="true">‹</span>
+            </button>
+
+            <nav class="side-navigation" aria-label="Main navigation">
+                <p class="menu-label">Menu</p>
+                <a class="nav-link active" href="#home" title="Home">
+                    <span aria-hidden="true">⌂</span>
+                    <span class="nav-text">Home</span>
+                </a>
+                <a class="nav-link" href="#products" title="Products">
+                    <span aria-hidden="true">◇</span>
+                    <span class="nav-text">Products</span>
+                </a>
+                <a class="nav-link" href="#categories" title="Categories">
+                    <span aria-hidden="true">▦</span>
+                    <span class="nav-text">Categories</span>
+                </a>
+                <a class="nav-link" href="#favorites" title="Favorites">
+                    <span aria-hidden="true">♡</span>
+                    <span class="nav-text">Favorites</span>
+                    <span class="nav-badge">3</span>
+                </a>
+                <a class="nav-link" href="#orders" title="My Orders">
+                    <span aria-hidden="true">▣</span>
+                    <span class="nav-text">My Orders</span>
+                </a>
+
+                <p class="menu-label account-label">Account</p>
+                <a class="nav-link" href="#profile" title="Profile">
+                    <span aria-hidden="true">☺</span>
+                    <span class="nav-text">Profile</span>
+                </a>
+                <a class="nav-link" href="#settings" title="Settings">
+                    <span aria-hidden="true">⚙</span>
+                    <span class="nav-text">Settings</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-promo">
+                <span aria-hidden="true">✦</span>
+                <strong>Sweet Deals</strong>
+                <p>Enjoy up to 30% off selected items.</p>
+                <a href="#products">Shop now</a>
+            </div>
+
+            <a class="logout-link" href="index.html" title="Log out">
+                <span aria-hidden="true">←</span>
+                <span class="logout-text">Log out</span>
+            </a>
+        </aside>
+
+        <button
+            class="sidebar-overlay"
+            id="sidebarOverlay"
+            type="button"
+            aria-label="Close navigation menu"
+            tabindex="-1"
+        ></button>
+
+        <main class="main-content" id="home">
+            <header class="topbar">
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-controls="sidebar"
+                    aria-expanded="false"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="search-box">
+                    <span aria-hidden="true">⌕</span>
+                    <label class="visually-hidden" for="productSearch">Search products</label>
+                    <input
+                        type="search"
+                        id="productSearch"
+                        placeholder="Search cute products..."
+                        autocomplete="off"
+                    >
+                </div>
+
+                <div class="topbar-actions">
+                    <button class="icon-button" type="button" aria-label="Notifications">
+                        ♡
+                        <span class="notification-dot"></span>
+                    </button>
+                    <button class="cart-button" type="button" aria-label="Shopping bag with 2 items">
+                        <span aria-hidden="true">▱</span>
+                        <span class="cart-text">My Bag</span>
+                        <span class="cart-count" id="cartCount">2</span>
+                    </button>
+                    <div class="profile-chip">
+                        <span class="avatar" aria-hidden="true">A</span>
+                        <div>
+                            <strong>Alex</strong>
+                            <small>Sweet member</small>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="hero" aria-labelledby="hero-title">
+                <div class="hero-content">
+                    <span class="hero-tag">New collection</span>
+                    <h1 id="hero-title">Add a little sweetness to your day.</h1>
+                    <p>Discover charming essentials chosen to make every moment feel extra special.</p>
+                    <a class="primary-link" href="#products">
+                        Explore collection <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+                <div class="hero-art" aria-hidden="true">
+                    <span class="hero-heart large-heart">♥</span>
+                    <span class="hero-heart small-heart">♥</span>
+                    <div class="shopping-bag">
+                        <span>♡</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-block" id="categories" aria-labelledby="category-title">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-kicker">Find your favorite</p>
+                        <h2 id="category-title">Shop by category</h2>
+                    </div>
+                    <a href="#categories">View all <span aria-hidden="true">→</span></a>
+                </div>
+
+                <div class="category-grid">
+                    <a class="category-card" href="#products" data-category="Beauty">
+                        <span class="category-icon beauty" aria-hidden="true">✿</span>
+                        <span>Beauty</span>
+                    </a>
+                    <a class="category-card" href="#products" data-category="Fashion">
+                        <span class="category-icon fashion" aria-hidden="true">♢</span>
+                        <span>Fashion</span>
+                    </a>
+                    <a class="category-card" href="#products" data-category="Accessories">
+                        <span class="category-icon accessories" aria-hidden="true">☆</span>
+                        <span>Accessories</span>
+                    </a>
+                    <a class="category-card" href="#products" data-category="Home">
+                        <span class="category-icon home" aria-hidden="true">⌂</span>
+                        <span>Home</span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="section-block" id="products" aria-labelledby="products-title">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-kicker">Made for you</p>
+                        <h2 id="products-title">Popular picks</h2>
+                    </div>
+                    <button class="filter-button" id="filterButton" type="button">
+                        All products <span aria-hidden="true">⌄</span>
+                    </button>
+                </div>
+
+                <p class="search-status" id="searchStatus" aria-live="polite"></p>
+
+                <div class="product-grid" id="productGrid">
+                    <article class="product-card" data-name="Blush Cloud Handbag" data-category="Fashion">
+                        <div class="product-image product-bag">
+                            <span class="product-emoji" aria-hidden="true">👜</span>
+                            <button class="favorite-button" type="button" aria-label="Add Blush Cloud Handbag to favorites">♡</button>
+                            <span class="product-label">Bestseller</span>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category">Fashion</span>
+                            <h3>Blush Cloud Handbag</h3>
+                            <div class="product-footer">
+                                <strong>₱899</strong>
+                                <button class="add-button" type="button" aria-label="Add Blush Cloud Handbag to bag">+</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-name="Strawberry Glow Set" data-category="Beauty">
+                        <div class="product-image product-beauty">
+                            <span class="product-emoji" aria-hidden="true">🧴</span>
+                            <button class="favorite-button" type="button" aria-label="Add Strawberry Glow Set to favorites">♡</button>
+                            <span class="product-label new-label">New</span>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category">Beauty</span>
+                            <h3>Strawberry Glow Set</h3>
+                            <div class="product-footer">
+                                <strong>₱649</strong>
+                                <button class="add-button" type="button" aria-label="Add Strawberry Glow Set to bag">+</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-name="Heart Charm Necklace" data-category="Accessories">
+                        <div class="product-image product-necklace">
+                            <span class="product-emoji" aria-hidden="true">📿</span>
+                            <button class="favorite-button" type="button" aria-label="Add Heart Charm Necklace to favorites">♡</button>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category">Accessories</span>
+                            <h3>Heart Charm Necklace</h3>
+                            <div class="product-footer">
+                                <strong>₱429</strong>
+                                <button class="add-button" type="button" aria-label="Add Heart Charm Necklace to bag">+</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-name="Cozy Blossom Mug" data-category="Home">
+                        <div class="product-image product-mug">
+                            <span class="product-emoji" aria-hidden="true">☕</span>
+                            <button class="favorite-button" type="button" aria-label="Add Cozy Blossom Mug to favorites">♡</button>
+                            <span class="product-label sale-label">-20%</span>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category">Home</span>
+                            <h3>Cozy Blossom Mug</h3>
+                            <div class="product-footer">
+                                <div class="price-group">
+                                    <strong>₱359</strong>
+                                    <del>₱449</del>
+                                </div>
+                                <button class="add-button" type="button" aria-label="Add Cozy Blossom Mug to bag">+</button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <footer class="shop-footer">
+                <span>Made with <span aria-hidden="true">♡</span> by Sweet Shop</span>
+                <span>Simple. Lovely. Yours.</span>
+            </footer>
+        </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="shop.js"></script>
+</body>
+</html>
