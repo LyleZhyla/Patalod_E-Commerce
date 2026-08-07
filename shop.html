@@ -11,265 +11,130 @@
     <link rel="stylesheet" href="shop.css">
 </head>
 
+
 <body>
     <div class="shop-layout">
         <aside class="sidebar" id="sidebar">
             <div class="brand">
                 <span class="brand-mark" aria-hidden="true">♡</span>
-                <div>
-                    <strong>Sweet Shop</strong>
-                    <small>Pretty little finds</small>
-                </div>
+                <div><strong>Sweet Shop</strong><small>Pretty little finds</small></div>
             </div>
-
-            <button
-                class="sidebar-collapse"
-                id="sidebarCollapse"
-                type="button"
-                aria-label="Collapse side menu"
-                aria-expanded="true"
-            >
-                <span aria-hidden="true">‹</span>
-            </button>
+            <button class="sidebar-collapse" id="sidebarCollapse" type="button" aria-label="Collapse side menu" aria-expanded="true"><span aria-hidden="true">‹</span></button>
 
             <nav class="side-navigation" aria-label="Main navigation">
                 <p class="menu-label">Menu</p>
-                <a class="nav-link active" href="#home" title="Home">
-                    <span aria-hidden="true">⌂</span>
-                    <span class="nav-text">Home</span>
-                </a>
-                <a class="nav-link" href="#products" title="Products">
-                    <span aria-hidden="true">◇</span>
-                    <span class="nav-text">Products</span>
-                </a>
-                <a class="nav-link" href="#categories" title="Categories">
-                    <span aria-hidden="true">▦</span>
-                    <span class="nav-text">Categories</span>
-                </a>
-                <a class="nav-link" href="#favorites" title="Favorites">
-                    <span aria-hidden="true">♡</span>
-                    <span class="nav-text">Favorites</span>
-                    <span class="nav-badge">3</span>
-                </a>
-                <a class="nav-link" href="#orders" title="My Orders">
-                    <span aria-hidden="true">▣</span>
-                    <span class="nav-text">My Orders</span>
-                </a>
-
+                <a class="nav-link active" href="#home" data-page="home" title="Home"><span aria-hidden="true">⌂</span><span class="nav-text">Home</span></a>
+                <a class="nav-link" href="#products" data-page="products" title="Products"><span aria-hidden="true">◇</span><span class="nav-text">Products</span></a>
+                <a class="nav-link" href="#categories" data-page="categories" title="Categories"><span aria-hidden="true">▦</span><span class="nav-text">Categories</span></a>
+                <a class="nav-link" href="#favorites" data-page="favorites" title="Favorites"><span aria-hidden="true">♡</span><span class="nav-text">Favorites</span><span class="nav-badge" id="favoriteCount">3</span></a>
+                <a class="nav-link" href="#orders" data-page="orders" title="My Orders"><span aria-hidden="true">▣</span><span class="nav-text">My Orders</span></a>
                 <p class="menu-label account-label">Account</p>
-                <a class="nav-link" href="#profile" title="Profile">
-                    <span aria-hidden="true">☺</span>
-                    <span class="nav-text">Profile</span>
-                </a>
-                <a class="nav-link" href="#settings" title="Settings">
-                    <span aria-hidden="true">⚙</span>
-                    <span class="nav-text">Settings</span>
-                </a>
+                <a class="nav-link" href="#profile" data-page="profile" title="Profile"><span aria-hidden="true">☺</span><span class="nav-text">Profile</span></a>
+                <a class="nav-link" href="#settings" data-page="settings" title="Settings"><span aria-hidden="true">⚙</span><span class="nav-text">Settings</span></a>
             </nav>
 
-            <div class="sidebar-promo">
-                <span aria-hidden="true">✦</span>
-                <strong>Sweet Deals</strong>
-                <p>Enjoy up to 30% off selected items.</p>
-                <a href="#products">Shop now</a>
-            </div>
-
-            <a class="logout-link" href="index.html" title="Log out">
-                <span aria-hidden="true">←</span>
-                <span class="logout-text">Log out</span>
-            </a>
+            <div class="sidebar-promo"><span aria-hidden="true">✦</span><strong>Sweet Deals</strong><p>Enjoy up to 30% off selected items.</p><a href="#products" data-go-page="products">Shop now</a></div>
+            <a class="logout-link" href="index.html" title="Log out"><span aria-hidden="true">←</span><span class="logout-text">Log out</span></a>
         </aside>
 
-        <button
-            class="sidebar-overlay"
-            id="sidebarOverlay"
-            type="button"
-            aria-label="Close navigation menu"
-            tabindex="-1"
-        ></button>
+        <button class="sidebar-overlay" id="sidebarOverlay" type="button" aria-label="Close navigation menu" tabindex="-1"></button>
 
-        <main class="main-content" id="home">
+        <main class="main-content">
             <header class="topbar">
-                <button
-                    class="menu-toggle"
-                    id="menuToggle"
-                    type="button"
-                    aria-label="Open navigation menu"
-                    aria-controls="sidebar"
-                    aria-expanded="false"
-                >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-
-                <div class="search-box">
+                <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-controls="sidebar" aria-expanded="false"><span></span><span></span><span></span></button>
+                
+                <div class="search-box"> 
                     <span aria-hidden="true">⌕</span>
                     <label class="visually-hidden" for="productSearch">Search products</label>
-                    <input
-                        type="search"
-                        id="productSearch"
-                        placeholder="Search cute products..."
-                        autocomplete="off"
-                    >
+                    <input type="search" id="productSearch" placeholder="Search cute products..." autocomplete="off">
                 </div>
-
+                
                 <div class="topbar-actions">
-                    <button class="icon-button" type="button" aria-label="Notifications">
-                        ♡
-                        <span class="notification-dot"></span>
-                    </button>
-                    <button class="cart-button" type="button" aria-label="Shopping bag with 2 items">
-                        <span aria-hidden="true">▱</span>
-                        <span class="cart-text">My Bag</span>
-                        <span class="cart-count" id="cartCount">2</span>
-                    </button>
-                    <div class="profile-chip">
-                        <span class="avatar" aria-hidden="true">A</span>
-                        <div>
-                            <strong>Alex</strong>
-                            <small>Sweet member</small>
-                        </div>
-                    </div>
+                    <button class="icon-button" id="notificationButton" type="button" aria-label="Notifications">♡<span class="notification-dot"></span></button>
+                    <button class="cart-button" type="button" aria-label="Shopping bag"><span aria-hidden="true">▱</span><span class="cart-text">My Bag</span><span class="cart-count" id="cartCount">2</span></button>
+                    <button class="profile-chip" type="button" data-go-page="profile"><span class="avatar" aria-hidden="true">A</span><span><strong>Alex</strong><small>Sweet member</small></span></button>
                 </div>
             </header>
 
-            <section class="hero" aria-labelledby="hero-title">
-                <div class="hero-content">
-                    <span class="hero-tag">New collection</span>
-                    <h1 id="hero-title">Add a little sweetness to your day.</h1>
-                    <p>Discover charming essentials chosen to make every moment feel extra special.</p>
-                    <a class="primary-link" href="#products">
-                        Explore collection <span aria-hidden="true">→</span>
-                    </a>
-                </div>
-                <div class="hero-art" aria-hidden="true">
-                    <span class="hero-heart large-heart">♥</span>
-                    <span class="hero-heart small-heart">♥</span>
-                    <div class="shopping-bag">
-                        <span>♡</span>
+            <div class="page-panel active" id="home" data-page-panel="home">
+                <section class="hero" aria-labelledby="hero-title">
+                    <div class="hero-content"><span class="hero-tag">New collection</span><h1 id="hero-title">Add a little sweetness to your day.</h1><p>Discover charming essentials chosen to make every moment feel extra special.</p><a class="primary-link" href="#products" data-go-page="products">Explore collection <span aria-hidden="true">→</span></a></div>
+                    <div class="hero-art" aria-hidden="true"><span class="hero-heart large-heart">♥</span><span class="hero-heart small-heart">♥</span><div class="shopping-bag"><span>♡</span></div></div>
+                </section>
+
+                <section class="section-block">
+                    <div class="section-heading"><div><p class="section-kicker">Find your favorite</p><h2>Shop by category</h2></div><a href="#categories" data-go-page="categories">View all →</a></div>
+                    <div class="category-grid compact-categories">
+                        <button class="category-card" data-category="Beauty"><span class="category-icon beauty">✿</span><span>Beauty</span></button>
+                        <button class="category-card" data-category="Fashion"><span class="category-icon fashion">♢</span><span>Fashion</span></button>
+                        <button class="category-card" data-category="Accessories"><span class="category-icon accessories">☆</span><span>Accessories</span></button>
+                        <button class="category-card" data-category="Home"><span class="category-icon home">⌂</span><span>Home</span></button>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <section class="section-block" id="categories" aria-labelledby="category-title">
-                <div class="section-heading">
-                    <div>
-                        <p class="section-kicker">Find your favorite</p>
-                        <h2 id="category-title">Shop by category</h2>
-                    </div>
-                    <a href="#categories">View all <span aria-hidden="true">→</span></a>
-                </div>
+                <section class="section-block">
+                    <div class="section-heading"><div><p class="section-kicker">This week</p><h2>Sweet shop highlights</h2></div></div>
+                    <div class="stats-grid"><article class="stat-card"><span>♡</span><div><strong>12</strong><small>New arrivals</small></div></article><article class="stat-card"><span>✦</span><div><strong>30%</strong><small>Biggest discount</small></div></article><article class="stat-card"><span>☺</span><div><strong>4.9</strong><small>Shop rating</small></div></article></div>
+                </section>
+            </div>
 
-                <div class="category-grid">
-                    <a class="category-card" href="#products" data-category="Beauty">
-                        <span class="category-icon beauty" aria-hidden="true">✿</span>
-                        <span>Beauty</span>
-                    </a>
-                    <a class="category-card" href="#products" data-category="Fashion">
-                        <span class="category-icon fashion" aria-hidden="true">♢</span>
-                        <span>Fashion</span>
-                    </a>
-                    <a class="category-card" href="#products" data-category="Accessories">
-                        <span class="category-icon accessories" aria-hidden="true">☆</span>
-                        <span>Accessories</span>
-                    </a>
-                    <a class="category-card" href="#products" data-category="Home">
-                        <span class="category-icon home" aria-hidden="true">⌂</span>
-                        <span>Home</span>
-                    </a>
-                </div>
-            </section>
-
-            <section class="section-block" id="products" aria-labelledby="products-title">
-                <div class="section-heading">
-                    <div>
-                        <p class="section-kicker">Made for you</p>
-                        <h2 id="products-title">Popular picks</h2>
-                    </div>
-                    <button class="filter-button" id="filterButton" type="button">
-                        All products <span aria-hidden="true">⌄</span>
-                    </button>
-                </div>
-
+            <div class="page-panel" id="products" data-page-panel="products">
+                <section class="page-intro"><div><p class="section-kicker">Made for you</p><h1>All products</h1><p>Browse our handpicked collection of charming everyday finds.</p></div><button class="filter-button" id="filterButton" type="button">All products ▾</button></section>
                 <p class="search-status" id="searchStatus" aria-live="polite"></p>
-
                 <div class="product-grid" id="productGrid">
-                    <article class="product-card" data-name="Blush Cloud Handbag" data-category="Fashion">
-                        <div class="product-image product-bag">
-                            <span class="product-emoji" aria-hidden="true">👜</span>
-                            <button class="favorite-button" type="button" aria-label="Add Blush Cloud Handbag to favorites">♡</button>
-                            <span class="product-label">Bestseller</span>
-                        </div>
-                        <div class="product-details">
-                            <span class="product-category">Fashion</span>
-                            <h3>Blush Cloud Handbag</h3>
-                            <div class="product-footer">
-                                <strong>₱899</strong>
-                                <button class="add-button" type="button" aria-label="Add Blush Cloud Handbag to bag">+</button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="product-card" data-name="Strawberry Glow Set" data-category="Beauty">
-                        <div class="product-image product-beauty">
-                            <span class="product-emoji" aria-hidden="true">🧴</span>
-                            <button class="favorite-button" type="button" aria-label="Add Strawberry Glow Set to favorites">♡</button>
-                            <span class="product-label new-label">New</span>
-                        </div>
-                        <div class="product-details">
-                            <span class="product-category">Beauty</span>
-                            <h3>Strawberry Glow Set</h3>
-                            <div class="product-footer">
-                                <strong>₱649</strong>
-                                <button class="add-button" type="button" aria-label="Add Strawberry Glow Set to bag">+</button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="product-card" data-name="Heart Charm Necklace" data-category="Accessories">
-                        <div class="product-image product-necklace">
-                            <span class="product-emoji" aria-hidden="true">📿</span>
-                            <button class="favorite-button" type="button" aria-label="Add Heart Charm Necklace to favorites">♡</button>
-                        </div>
-                        <div class="product-details">
-                            <span class="product-category">Accessories</span>
-                            <h3>Heart Charm Necklace</h3>
-                            <div class="product-footer">
-                                <strong>₱429</strong>
-                                <button class="add-button" type="button" aria-label="Add Heart Charm Necklace to bag">+</button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="product-card" data-name="Cozy Blossom Mug" data-category="Home">
-                        <div class="product-image product-mug">
-                            <span class="product-emoji" aria-hidden="true">☕</span>
-                            <button class="favorite-button" type="button" aria-label="Add Cozy Blossom Mug to favorites">♡</button>
-                            <span class="product-label sale-label">-20%</span>
-                        </div>
-                        <div class="product-details">
-                            <span class="product-category">Home</span>
-                            <h3>Cozy Blossom Mug</h3>
-                            <div class="product-footer">
-                                <div class="price-group">
-                                    <strong>₱359</strong>
-                                    <del>₱449</del>
-                                </div>
-                                <button class="add-button" type="button" aria-label="Add Cozy Blossom Mug to bag">+</button>
-                            </div>
-                        </div>
-                    </article>
+                    <article class="product-card" data-id="bag" data-name="Blush Cloud Handbag" data-category="Fashion"><div class="product-image product-bag"><span class="product-emoji">👜</span><button class="favorite-button selected" type="button" aria-label="Remove Blush Cloud Handbag from favorites">♥</button><span class="product-label">Bestseller</span></div><div class="product-details"><span class="product-category">Fashion</span><h3>Blush Cloud Handbag</h3><div class="product-footer"><strong>₱899</strong><button class="add-button" type="button" aria-label="Add Blush Cloud Handbag to bag">+</button></div></div></article>
+                    <article class="product-card" data-id="glow" data-name="Strawberry Glow Set" data-category="Beauty"><div class="product-image product-beauty"><span class="product-emoji">🧴</span><button class="favorite-button selected" type="button" aria-label="Remove Strawberry Glow Set from favorites">♥</button><span class="product-label new-label">New</span></div><div class="product-details"><span class="product-category">Beauty</span><h3>Strawberry Glow Set</h3><div class="product-footer"><strong>₱649</strong><button class="add-button" type="button" aria-label="Add Strawberry Glow Set to bag">+</button></div></div></article>
+                    <article class="product-card" data-id="necklace" data-name="Heart Charm Necklace" data-category="Accessories"><div class="product-image product-necklace"><span class="product-emoji">📿</span><button class="favorite-button selected" type="button" aria-label="Remove Heart Charm Necklace from favorites">♥</button></div><div class="product-details"><span class="product-category">Accessories</span><h3>Heart Charm Necklace</h3><div class="product-footer"><strong>₱429</strong><button class="add-button" type="button" aria-label="Add Heart Charm Necklace to bag">+</button></div></div></article>
+                    <article class="product-card" data-id="mug" data-name="Cozy Blossom Mug" data-category="Home"><div class="product-image product-mug"><span class="product-emoji">☕</span><button class="favorite-button" type="button" aria-label="Add Cozy Blossom Mug to favorites">♡</button><span class="product-label sale-label">-20%</span></div><div class="product-details"><span class="product-category">Home</span><h3>Cozy Blossom Mug</h3><div class="product-footer"><div class="price-group"><strong>₱359</strong><del>₱449</del></div><button class="add-button" type="button" aria-label="Add Cozy Blossom Mug to bag">+</button></div></div></article>
                 </div>
-            </section>
+            </div>
 
-            <footer class="shop-footer">
-                <span>Made with <span aria-hidden="true">♡</span> by Sweet Shop</span>
-                <span>Simple. Lovely. Yours.</span>
-            </footer>
+            <div class="page-panel" id="categories" data-page-panel="categories">
+                <section class="page-intro"><div><p class="section-kicker">Explore your style</p><h1>Categories</h1><p>Find exactly what you love, grouped into our sweetest collections.</p></div></section>
+                <div class="category-showcase">
+                    <button class="category-feature beauty-feature" data-category="Beauty"><span>✿</span><div><small>12 items</small><h2>Beauty</h2><p>Glow-ready skincare and self-care picks.</p><b>Shop collection →</b></div></button>
+                    <button class="category-feature fashion-feature" data-category="Fashion"><span>♢</span><div><small>18 items</small><h2>Fashion</h2><p>Soft, playful pieces made for every day.</p><b>Shop collection →</b></div></button>
+                    <button class="category-feature accessories-feature" data-category="Accessories"><span>☆</span><div><small>9 items</small><h2>Accessories</h2><p>Little details that complete your look.</p><b>Shop collection →</b></div></button>
+                    <button class="category-feature home-feature" data-category="Home"><span>⌂</span><div><small>15 items</small><h2>Home</h2><p>Cozy accents for your favorite spaces.</p><b>Shop collection →</b></div></button>
+                </div>
+            </div>
+
+            <div class="page-panel" id="favorites" data-page-panel="favorites">
+                <section class="page-intro"><div><p class="section-kicker">Saved with love</p><h1>My favorites</h1><p>All the sweet finds you’ve saved, ready whenever you are.</p></div><button class="outline-button" id="addFavoritesToBag" type="button">Add all to bag</button></section>
+                <div class="favorite-list" id="favoriteList"></div>
+                <div class="empty-state" id="emptyFavorites" hidden><span>♡</span><h2>No favorites yet</h2><p>Tap the heart on a product to save it here.</p><button class="primary-action" type="button" data-go-page="products">Browse products</button></div>
+            </div>
+
+            <div class="page-panel" id="orders" data-page-panel="orders">
+                <section class="page-intro"><div><p class="section-kicker">From us to you</p><h1>My orders</h1><p>Track current deliveries and revisit your past sweet finds.</p></div></section>
+                <div class="order-tabs"><button class="active" type="button" data-order-filter="all">All orders</button><button type="button" data-order-filter="active">In progress</button><button type="button" data-order-filter="completed">Completed</button></div>
+                <div class="orders-list">
+                    <article class="order-card" data-order-status="active"><div class="order-head"><div><small>Order #SS-24081</small><h3>Arriving August 10</h3></div><span class="status-badge shipping">Out for delivery</span></div><div class="order-body"><div class="order-products"><span>👜</span><span>🧴</span><div><strong>2 items</strong><small>Blush Cloud Handbag + 1 more</small></div></div><strong>₱1,548</strong></div><div class="tracking"><span class="done"></span><span class="done"></span><span class="done"></span><span></span></div><div class="order-actions"><button class="outline-button track-order" type="button">Track order</button><button type="button">View details</button></div></article>
+                    <article class="order-card" data-order-status="completed"><div class="order-head"><div><small>Order #SS-23926</small><h3>Delivered July 24</h3></div><span class="status-badge delivered">Delivered</span></div><div class="order-body"><div class="order-products"><span>☕</span><div><strong>1 item</strong><small>Cozy Blossom Mug</small></div></div><strong>₱359</strong></div><div class="order-actions"><button class="outline-button buy-again" type="button">Buy again</button><button type="button">View details</button></div></article>
+                </div>
+            </div>
+
+            <div class="page-panel" id="profile" data-page-panel="profile">
+                <section class="page-intro"><div><p class="section-kicker">Your sweet space</p><h1>My profile</h1><p>Manage your personal details and delivery information.</p></div></section>
+                <div class="account-grid">
+                    <aside class="profile-summary"><span class="large-avatar">A</span><h2>Alex Rivera</h2><p>alex.rivera@email.com</p><span class="member-pill">Sweet member since 2026</span><div class="profile-numbers"><div><strong>2</strong><small>Orders</small></div><div><strong id="profileFavoriteCount">3</strong><small>Favorites</small></div></div></aside>
+                    <form class="content-card profile-form" id="profileForm"><div class="card-title"><div><h2>Personal information</h2><p>Keep your contact details up to date.</p></div><button class="outline-button" id="editProfile" type="button">Edit</button></div><div class="form-grid"><label>First name<input name="firstName" value="Alex" disabled></label><label>Last name<input name="lastName" value="Rivera" disabled></label><label>Email address<input name="email" type="email" value="alex.rivera@email.com" disabled></label><label>Phone number<input name="phone" value="+63 912 345 6789" disabled></label><label class="full-field">Delivery address<textarea name="address" rows="3" disabled>123 Sampaguita Street, Quezon City, Metro Manila</textarea></label></div><button class="primary-action save-profile" type="submit" hidden>Save changes</button></form>
+                </div>
+            </div>
+
+            <div class="page-panel" id="settings" data-page-panel="settings">
+                <section class="page-intro"><div><p class="section-kicker">Make it yours</p><h1>Settings</h1><p>Choose how Sweet Shop works and communicates with you.</p></div></section>
+                <form class="settings-stack" id="settingsForm">
+                    <section class="content-card"><div class="card-title"><div><h2>Notifications</h2><p>Pick the updates you want to receive.</p></div></div><label class="setting-row"><span><strong>Order updates</strong><small>Shipping and delivery notifications</small></span><input class="switch" type="checkbox" checked></label><label class="setting-row"><span><strong>Sweet deals</strong><small>Sales, vouchers, and special offers</small></span><input class="switch" type="checkbox" checked></label><label class="setting-row"><span><strong>New arrivals</strong><small>Fresh collections picked for you</small></span><input class="switch" type="checkbox"></label></section>
+                    <section class="content-card"><div class="card-title"><div><h2>Shopping preferences</h2><p>Set your default shopping experience.</p></div></div><div class="form-grid"><label>Language<select><option>English</option><option>Filipino</option></select></label><label>Currency<select><option>PHP — Philippine Peso</option><option>USD — US Dollar</option></select></label></div></section>
+                    <section class="content-card danger-card"><div><h2>Account privacy</h2><p>Manage your password and personal data.</p></div><div><button class="outline-button" type="button" id="changePassword">Change password</button><button class="text-danger" type="button" id="deleteAccount">Delete account</button></div></section>
+                    <button class="primary-action settings-save" type="submit">Save settings</button>
+                </form>
+            </div>
+
+            <footer class="shop-footer"><span>Made with <span aria-hidden="true">♡</span> by Sweet Shop</span><span>Simple. Lovely. Yours.</span></footer>
         </main>
     </div>
-
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <script src="shop.js"></script>
 </body>
