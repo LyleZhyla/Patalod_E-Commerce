@@ -995,6 +995,16 @@ a {
 
 .favorite-list { display: grid; margin-top: 25px; gap: 14px; }
 .favorite-row { display: grid; padding: 15px; border: 1px solid var(--pink-100); border-radius: 18px; background: var(--white); box-shadow: 0 8px 24px rgba(174,49,95,.06); grid-template-columns: 76px 1fr auto; align-items: center; gap: 17px; }
+.bag-layout { display: grid; margin-top: 24px; grid-template-columns: minmax(0, 1fr) 310px; align-items: start; gap: 22px; }
+.bag-list { display: grid; gap: 14px; }
+.bag-row { display: grid; padding: 16px; border: 1px solid var(--pink-100); border-radius: 18px; background: var(--white); box-shadow: 0 8px 24px rgba(174,49,95,.06); grid-template-columns: 76px 1fr auto; align-items: center; gap: 17px; }
+.bag-controls { display: flex; align-items: center; gap: 9px; }
+.bag-controls button { min-width: 34px; height: 34px; border: 1px solid var(--pink-200); border-radius: 10px; color: var(--pink-700); font: inherit; font-weight: 800; background: var(--white); cursor: pointer; }
+.bag-controls .remove-bag-item { margin-left: 5px; padding: 0 10px; color: #bf4260; font-size: .72rem; }
+.bag-summary { display: grid; padding: 22px; gap: 14px; }
+.bag-summary > div { display: flex; justify-content: space-between; color: var(--muted); }
+.bag-summary .bag-total { padding-top: 14px; border-top: 1px solid var(--pink-100); color: var(--text); font-size: 1.05rem; }
+.bag-summary .primary-action { width: 100%; }
 .favorite-thumb { display: grid; width: 76px; height: 76px; border-radius: 15px; font-size: 2rem; background: var(--pink-100); place-items: center; }
 .favorite-info small { color: var(--pink-500); font-size: .65rem; font-weight: 800; text-transform: uppercase; }
 .favorite-info h3 { margin: 3px 0 6px; font-size: .95rem; }
@@ -1138,6 +1148,7 @@ a {
 }
 
 @media (max-width: 820px) {
+    .bag-layout { grid-template-columns: 1fr; }
     .sidebar {
         width: min(82vw, 290px);
         transform: translateX(-105%);
@@ -1234,6 +1245,8 @@ a {
 }
 
 @media (max-width: 540px) {
+    .bag-row { grid-template-columns: 62px 1fr; }
+    .bag-controls { grid-column: 1 / -1; justify-content: flex-end; }
     .main-content {
         padding: 0 15px;
     }

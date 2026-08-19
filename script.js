@@ -5,7 +5,6 @@ const usernameError = document.getElementById("usernameError");
 const passwordError = document.getElementById("passwordError");
 const formMessage = document.getElementById("formMessage");
 const passwordToggle = document.getElementById("passwordToggle");
-const forgotPassword = document.getElementById("forgotPassword");
 
 function showFieldError(input, errorElement, message) {
     input.classList.add("input-error");
@@ -139,14 +138,6 @@ passwordToggle.addEventListener("click", function () {
         passwordIsHidden ? "Hide password" : "Show password"
     );
     passwordToggle.setAttribute("aria-pressed", String(passwordIsHidden));
-});
-
-forgotPassword.addEventListener("click", function (event) {
-    event.preventDefault();
-    showFormMessage(
-        "Password recovery is not required for this front-end activity.",
-        "error"
-    );
 });
 
 const registeredEmail = new URLSearchParams(window.location.search).get("registered");

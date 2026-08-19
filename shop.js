@@ -13,10 +13,14 @@ const favoriteCount = document.getElementById("favoriteCount");
 const profileFavoriteCount = document.getElementById("profileFavoriteCount");
 const favoriteList = document.getElementById("favoriteList");
 const emptyFavorites = document.getElementById("emptyFavorites");
+const bagList = document.getElementById("bagList");
+const emptyBag = document.getElementById("emptyBag");
+const bagSummary = document.getElementById("bagSummary");
 const toast = document.getElementById("toast");
 const validPages = pagePanels.map((panel) => panel.dataset.pagePanel);
 let toastTimer;
 let activeCategory = "All";
+const bag = new Map([["bag", 1], ["glow", 1]]);
 
 const products = productCards.map((card) => ({
     id: card.dataset.id,
@@ -66,6 +70,7 @@ function showPage(page, updateHash = true) {
     });
     if (updateHash && window.location.hash !== `#${nextPage}`) history.pushState(null, "", `#${nextPage}`);
     if (nextPage === "favorites") renderFavorites();
+    if (nextPage === "bag") renderBag();
     if (nextPage !== "products") productSearch.blur();
     document.title = `${nextPage.charAt(0).toUpperCase() + nextPage.slice(1)} | Sweet Shop`;
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -131,8 +136,45 @@ function setFavorite(product, shouldFavorite) {
 }
 
 function addToBag(product, quantity = 1) {
-    cartCount.textContent = String(Number(cartCount.textContent) + quantity);
+    bag.set(product.id, (bag.get(product.id) || 0) + quantity);
+    renderBag();
     showToast(`${product.name} added to your bag!`);
+}
+
+function getPriceValue(product) {
+    return Number(product.price.replace(/[^\d.]/g, ""));
+}
+
+function renderBag() {
+    const entries = [...bag.entries()].filter(([, quantity]) => quantity > 0);
+    const itemCount = entries.reduce((total, [, quantity]) => total + quantity, 0);
+    const subtotal = entries.reduce((total, [id, quantity]) => {
+        const product = products.find((item) => item.id === id);
+        return total + getPriceValue(product) * quantity;
+    }, 0);
+
+    bagList.innerHTML = entries.map(([id, quantity]) => {
+        const product = products.find((item) => item.id === id);
+        return `
+            <article class="bag-row" data-bag-id="${product.id}">
+                <span class="favorite-thumb" aria-hidden="true">${product.emoji}</span>
+                <div class="favorite-info"><small>${product.category}</small><h3>${product.name}</h3><strong>${product.price}</strong></div>
+                <div class="bag-controls">
+                    <button type="button" data-bag-action="decrease" aria-label="Decrease ${product.name} quantity">−</button>
+                    <strong aria-label="Quantity">${quantity}</strong>
+                    <button type="button" data-bag-action="increase" aria-label="Increase ${product.name} quantity">+</button>
+                    <button class="remove-bag-item" type="button" data-bag-action="remove" aria-label="Remove ${product.name} from bag">Remove</button>
+                </div>
+            </article>`;
+    }).join("");
+
+    cartCount.textContent = String(itemCount);
+    document.getElementById("bagItemCount").textContent = String(itemCount);
+    document.getElementById("bagSubtotal").textContent = `₱${subtotal.toLocaleString("en-PH")}`;
+    document.getElementById("bagTotal").textContent = `₱${subtotal.toLocaleString("en-PH")}`;
+    bagList.hidden = entries.length === 0;
+    bagSummary.hidden = entries.length === 0;
+    emptyBag.hidden = entries.length !== 0;
 }
 
 menuToggle.addEventListener("click", () => sidebar.classList.contains("open") ? closeSidebar() : openSidebar());
@@ -186,8 +228,26 @@ favoriteList.addEventListener("click", (event) => {
 document.getElementById("addFavoritesToBag").addEventListener("click", () => {
     const favorites = getFavoriteProducts();
     if (!favorites.length) return;
-    cartCount.textContent = String(Number(cartCount.textContent) + favorites.length);
+    favorites.forEach((product) => bag.set(product.id, (bag.get(product.id) || 0) + 1));
+    renderBag();
     showToast(`${favorites.length} favorites added to your bag!`);
+});
+
+bagList.addEventListener("click", (event) => {
+    const row = event.target.closest("[data-bag-id]");
+    const action = event.target.closest("[data-bag-action]")?.dataset.bagAction;
+    if (!row || !action) return;
+    const id = row.dataset.bagId;
+    const currentQuantity = bag.get(id) || 0;
+    if (action === "increase") bag.set(id, currentQuantity + 1);
+    if (action === "decrease") bag.set(id, Math.max(0, currentQuantity - 1));
+    if (action === "remove") bag.delete(id);
+    if (bag.get(id) === 0) bag.delete(id);
+    renderBag();
+});
+
+document.getElementById("checkoutButton").addEventListener("click", () => {
+    showToast("Checkout is ready for payment integration.");
 });
 
 const filterOptions = ["All", "Beauty", "Fashion", "Accessories", "Home"];
@@ -238,4 +298,5 @@ document.getElementById("notificationButton").addEventListener("click", () => sh
 window.addEventListener("popstate", () => showPage(window.location.hash.slice(1) || "home", false));
 updateFavoriteCounts();
 filterProducts();
+renderBag();
 showPage(window.location.hash.slice(1) || "home", false);

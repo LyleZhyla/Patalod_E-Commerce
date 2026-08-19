@@ -23,7 +23,7 @@
 
             <nav class="side-navigation" aria-label="Main navigation">
                 <p class="menu-label">Menu</p>
-                <a class="nav-link active" href="index.html" data-page="home" title="Home"><span aria-hidden="true">⌂</span><span class="nav-text">Home</span></a>
+                <a class="nav-link active" href="#home" data-page="home" title="Home"><span aria-hidden="true">⌂</span><span class="nav-text">Home</span></a>
                 <a class="nav-link" href="#products" data-page="products" title="Products"><span aria-hidden="true">◇</span><span class="nav-text">Products</span></a>
                 <a class="nav-link" href="#categories" data-page="categories" title="Categories"><span aria-hidden="true">▦</span><span class="nav-text">Categories</span></a>
                 <a class="nav-link" href="#favorites" data-page="favorites" title="Favorites"><span aria-hidden="true">♡</span><span class="nav-text">Favorites</span><span class="nav-badge" id="favoriteCount">3</span></a>
@@ -51,7 +51,7 @@
                 
                 <div class="topbar-actions">
                     <button class="icon-button" id="notificationButton" type="button" aria-label="Notifications">♡<span class="notification-dot"></span></button>
-                    <button class="cart-button" type="button" aria-label="Shopping bag"><span aria-hidden="true">▱</span><span class="cart-text">My Bag</span><span class="cart-count" id="cartCount">2</span></button>
+                    <button class="cart-button" type="button" aria-label="Open shopping bag" data-go-page="bag"><span aria-hidden="true">▱</span><span class="cart-text">My Bag</span><span class="cart-count" id="cartCount">2</span></button>
                     <button class="profile-chip" type="button" data-go-page="profile"><span class="avatar" aria-hidden="true">A</span><span><strong>Alex</strong><small>Sweet member</small></span></button>
                 </div>
             </header>
@@ -112,6 +112,22 @@
                     <article class="order-card" data-order-status="active"><div class="order-head"><div><small>Order #SS-24081</small><h3>Arriving August 10</h3></div><span class="status-badge shipping">Out for delivery</span></div><div class="order-body"><div class="order-products"><span>👜</span><span>🧴</span><div><strong>2 items</strong><small>Blush Cloud Handbag + 1 more</small></div></div><strong>₱1,548</strong></div><div class="tracking"><span class="done"></span><span class="done"></span><span class="done"></span><span></span></div><div class="order-actions"><button class="outline-button track-order" type="button">Track order</button><button type="button">View details</button></div></article>
                     <article class="order-card" data-order-status="completed"><div class="order-head"><div><small>Order #SS-23926</small><h3>Delivered July 24</h3></div><span class="status-badge delivered">Delivered</span></div><div class="order-body"><div class="order-products"><span>☕</span><div><strong>1 item</strong><small>Cozy Blossom Mug</small></div></div><strong>₱359</strong></div><div class="order-actions"><button class="outline-button buy-again" type="button">Buy again</button><button type="button">View details</button></div></article>
                 </div>
+            </div>
+
+            <div class="page-panel" id="bag" data-page-panel="bag">
+                <section class="page-intro"><div><p class="section-kicker">Almost yours</p><h1>My bag</h1><p>Review your sweet finds before checking out.</p></div><button class="outline-button" type="button" data-go-page="products">Continue shopping</button></section>
+                <div class="bag-layout">
+                    <section class="bag-list" id="bagList" aria-live="polite"></section>
+                    <aside class="content-card bag-summary" id="bagSummary">
+                        <h2>Order summary</h2>
+                        <div><span>Items</span><strong id="bagItemCount">0</strong></div>
+                        <div><span>Subtotal</span><strong id="bagSubtotal">₱0</strong></div>
+                        <div><span>Delivery</span><strong>Free</strong></div>
+                        <div class="bag-total"><span>Total</span><strong id="bagTotal">₱0</strong></div>
+                        <button class="primary-action" id="checkoutButton" type="button">Proceed to checkout</button>
+                    </aside>
+                </div>
+                <div class="empty-state" id="emptyBag" hidden><span>▱</span><h2>Your bag is empty</h2><p>Add a few lovely finds and they’ll appear here.</p><button class="primary-action" type="button" data-go-page="products">Browse products</button></div>
             </div>
 
             <div class="page-panel" id="profile" data-page-panel="profile">
